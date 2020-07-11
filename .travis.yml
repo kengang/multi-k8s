@@ -5,7 +5,7 @@ service:
 before_install:
         - docker build -t kengang/react-test -f ./client/Dockerfile.dev ./client
 script:
-        - docker run kengang/react-test npm test -- --converage
+        - docker run kengang/react-test npm test -- --coverage
 
 after_success:
         - docker build -t kengang/multi-client ./client
