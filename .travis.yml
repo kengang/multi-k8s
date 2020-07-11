@@ -8,14 +8,14 @@ script:
         - docker run kengang/react-test npm test -- --coverage
 
 after_success:
-        - docker build -t kengang/multi-client ./client
-        - docker build -t kengang/multi-server ./server
-        - docker build -t kengang/multi-nginx ./nginx
-        - docker build -t kengang/multi-worker ./worker
+        - docker build -t kenmei/multi-client ./client
+        - docker build -t kenmei/multi-server ./server
+        - docker build -t kenmei/multi-nginx ./nginx
+        - docker build -t kenmei/multi-worker ./worker
 
         - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-        - docker push kengang/multi-client
-        - docker push kengang/multi-server
-        - docker push kengang/multi-nginx
-        - docker push kengang/multi-worker
+        - docker push kenmei/multi-client
+        - docker push kenmei/multi-server
+        - docker push kenmei/multi-nginx
+        - docker push kenmei/multi-worker
 
