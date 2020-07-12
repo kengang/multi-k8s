@@ -20,6 +20,7 @@ after_success:
         - docker push kenmei/multi-worker
 
 deploy:
+        edge: true
         provider: elasticbeanstalk
         region: us-east-1
         app: Multi-container
