@@ -19,3 +19,14 @@ after_success:
         - docker push kenmei/multi-nginx
         - docker push kenmei/multi-worker
 
+deploy:
+        provider: elasticbeanstalk
+        region: us-east-1
+        app: Multi-container
+        env: MultiContainer-env
+        bucket_name: elasticbeanstalk-us-east-1-504949500814
+        bucket_path: dockermulti
+        on:
+                branch: master
+        access_key_id: $AWS_ACCESS_KEY
+        secret_access_key: $AWS_SECRET_KEY
