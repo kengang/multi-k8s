@@ -7,6 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: 'true'
     nginx.ingress.kubernetes.io/rewrite-target: /$1
     cert-manager.io/Cluster-issuer: 'letsencrypt-prod'
+    nginx.ingress.kubernetes.io/ssl-direct: 'true'
     # UPDATE THIS LINE ABOVE
 spec:
   tls:
@@ -28,7 +29,7 @@ spec:
             backend:
               serviceName: server-cluster-ip-service
               servicePort: 5000
-    - host: xrprocks.com
+    - host: www.xrprocks.com
       http:
         paths:
           - path: /?(.*)
