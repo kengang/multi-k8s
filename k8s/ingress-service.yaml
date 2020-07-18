@@ -6,10 +6,17 @@ metadata:
     kubernetes.io/ingress.class: 'nginx'
     nginx.ingress.kubernetes.io/use-regex: 'true'
     nginx.ingress.kubernetes.io/rewrite-target: /$1
+    cert-manager.io/Cluster-issuer: 'letsencrypt-prod'
     # UPDATE THIS LINE ABOVE
 spec:
+  tls:
+    - host:
+      - xrprocks.com
+      - www.xrprocks.com
+      secretName: xrprocks-com
   rules:
-    - http:
+    - host: xrprocks.com
+      http:
         paths:
           - path: /?(.*)
             # UPDATE THIS LINE ABOVE
@@ -21,3 +28,17 @@ spec:
             backend:
               serviceName: server-cluster-ip-service
               servicePort: 5000
+    - host: xrprocks.com
+      http:
+        paths:
+          - path: /?(.*)
+            # UPDATE THIS LINE ABOVE
+            backend:
+              serviceName: client-cluster-ip-service
+              servicePort: 3000
+          - path: /api/?(.*)
+            # UPDATE THIS LINE ABOVE
+            backend:
+              serviceName: server-cluster-ip-service
+              servicePort: 5000 
+              
