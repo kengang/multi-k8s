@@ -10,7 +10,7 @@ metadata:
     # UPDATE THIS LINE ABOVE
 spec:
   tls:
-    - host:
+    - hosts:
       - xrprocks.com
       - www.xrprocks.com
       secretName: xrprocks-com
