@@ -8,7 +8,7 @@ spec:
         email: 'ken.mei@outlook.com'
         privateKeySecretRef:
             name: letsencrypt-prod
-        solver:
+        solvers:
             - http01:
                 ingress:
                     class: nginx
